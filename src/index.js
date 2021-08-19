@@ -34,20 +34,20 @@ const App = () => {
 
   const xScale = scaleTime().domain(extent(data, xValue)).range([0, innerWidth]).nice()
 
-  const yScale = scaleLinear().domain(extent(data, yValue)).range([innerHeight, 0])
+  const yScale = scaleLinear().domain(extent(data, yValue)).range([innerHeight, 0]).nice()
 
   return (
     <svg width={width} height={height}>
       <g transform={`translate(${margin.left},${margin.top})`}>
-        <AxisBottom xScale={xScale} innerHeight={innerHeight} tickFormat={xAxisTickFormat} tickOffset={5} />
+        <AxisBottom xScale={xScale} innerHeight={innerHeight} tickFormat={xAxisTickFormat} tickOffset={7} />
         <text className='axis-label' textAnchor='middle' transform={`translate(${-yAxisLabelOffset},${innerHeight / 2}) rotate(-90)`}>
           {yAxisLabel}
         </text>
-        <AxisLeft yScale={yScale} innerWidth={innerWidth} tickOffset={5} />
+        <AxisLeft yScale={yScale} innerWidth={innerWidth} tickOffset={7} />
         <text className='axis-label' x={innerWidth / 2} y={innerHeight + xAxisLabelOffset} textAnchor='middle'>
           {xAxisLabel}
         </text>
-        <Marks data={data} yScale={yScale} xScale={xScale} yValue={yValue} xValue={xValue} tooltipFormat={xAxisTickFormat} circleRadius={7} />
+        <Marks data={data} yScale={yScale} xScale={xScale} yValue={yValue} xValue={xValue} tooltipFormat={xAxisTickFormat} circleRadius={3} />
       </g>
     </svg>
   )
